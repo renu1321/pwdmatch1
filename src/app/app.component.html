@@ -1,0 +1,25 @@
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<form name="form" (ngSubmit)="checkPasswords(f) && onSubmit()" #f="ngForm">
+
+<!-- Password & Confirm Password without any Forms Module -->
+<div class="mb-3">
+<label for="password" class="form-label">Password</label>
+<input type="password" [(ngModel)]="model.password"
+name="password" class="form-control" id="password" #pw>
+</div>
+
+<div class="mb-3">
+<label for="cPassword" class="form-label">Confirm Password</label>
+<input type="password" [ngClass]='confirmPasswordClass' [(ngModel)]="model.cPassword"
+name="name" id="cPassword" #cpw
+    (keyup)='checkPasswords(f)'>
+</div>
+<div *ngIf='!passwordsMatching && isConfirmPasswordDirty'>
+Passwords did not match
+</div>
+
+<button class="btn btn-primary mr-1">Register</button>
+</form>
